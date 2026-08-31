@@ -1,8 +1,8 @@
 - week: 1
   days:
-    - date: 'Aug 27'
+    - date: "Aug 27"
       items:
-        - type: 'Lecture'
-          id: '1'
+        - type: "Lecture"
+          id: "1"
           name: Slides--Introduction and Overview
-          href: './LectureOneSlides153248Fall2026PDF.pdf'
+          href: "./LectureOneSlides153248Fall2026PDF.pdf"
