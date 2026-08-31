@@ -1,5 +1,5 @@
 ---
-title: "Fall 153: Introduction to Time Series"
+title: "STAT 153 - STAT 248: Time Series Analysis"
 subtitle: 'UC Berkeley, Fall 2026'
 ---
 
@@ -12,8 +12,8 @@ subtitle: 'UC Berkeley, Fall 2026'
 
 [aditya@stat.berkeley.edu](mailto:aditya@stat.berkeley.edu)
 
-**Office Hours (Evans 422)**:
- - Tue and Thu 10-11 am
+**Office Hours (Gateway-LL-Golden Quarter B1040)**:
+ - Thu 2-4 pm
 
 :::
 
@@ -21,29 +21,26 @@ subtitle: 'UC Berkeley, Fall 2026'
 
 ::::{grid} 1 2 2 2
 :::{card}
-:header: **Dohyeong Ki (GSI)**
+:header: **Aidan McLoughlin (GSI)**
 
 +++
 
-[dohyeong_ki@berkeley.edu](mailto:dohyeong_ki@berkeley.edu)
+[aidan_mcloughlin@berkeley.edu](mailto:aidan_mcloughlin@berkeley.edu)
 
-**Office Hours (Evans 428)**:
- - Monday 5-6 pm
- - Tuesday 2:30 - 3:30 pm
- - Thursday 2:30 - 3:30 pm
+**Office Hours (Gateway LL 1040F)**:
+ - Wednesday 9 am to 12 pm
 
 :::
 
 :::{card}
-:header: **Shana Soohyun Kim (GSI)**
+:header: **Yichen Pan (GSI)**
 
 +++
 
-[shana22@berkeley.edu](mailto:shana22@berkeley.edu)
+[yichenpan@berkeley.edu](mailto:yichenpan@berkeley.edu)
 
-**Office Hours (Evans 428)**:
- - Wednesday 5 -6 pm
- - Friday 2 - 4 pm
+**Office Hours (Gateway B1008)**:
+ - Thursday 9 am to 12 pm
 
 :::
 
