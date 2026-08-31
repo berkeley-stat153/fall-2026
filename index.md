@@ -1,6 +1,6 @@
 ---
 title: "Fall 153: Introduction to Time Series"
-subtitle: 'UC Berkeley, Fall 2025'
+subtitle: 'UC Berkeley, Fall 2026'
 ---
 
 ::::{grid} 1 2 2 2
