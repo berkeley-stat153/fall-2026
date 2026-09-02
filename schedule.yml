@@ -24,3 +24,12 @@
           id: "2 Code"
           name: Notebook--Linear Regression Models fit to the US population data
           href: "./CodeLectureTwo153248Fall2026.ipynb"
+        - type: 'Dataset'
+          id: '1'
+          name: US Census Bureau 2023 Population Projections
+          href: "./US Census Bureau 2023 population projections.xlsx"
+        - type: 'Dataset'
+          id: '2'
+          name: UN 2024 Population Projections
+          href: "./UN 2024 population projections.xlsx"	  
+	  
