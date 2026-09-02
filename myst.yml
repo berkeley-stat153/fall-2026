@@ -24,6 +24,10 @@ project:
     - schedule.mjs
   toc:
     - file: index.md
+    - title: Week 2
+      children:
+      - file: CodeLabOne153248Fall2026.ipynb
+      - file: CodeLectureTwo153248Fall2026.ipynb
 site:
   template: book-theme
   title: 'Stat 153'

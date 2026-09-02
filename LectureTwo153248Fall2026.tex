@@ -1,0 +1,246 @@
+%\documentclass[12pt,oneside]{amsart}
+\documentclass{scrartcl}
+
+%\documentclass{article}
+
+\usepackage{amsthm,amsmath,amssymb}
+\usepackage[numbers]{natbib}
+
+%\usepackage[colorlinks]{hyperref}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,%
+    citecolor=black,%
+    filecolor=black,%
+    linkcolor=black,%
+    urlcolor=black
+}
+\usepackage{hypernat}
+\usepackage[top=2.5cm, bottom=2.5cm, left=2.8cm,
+right=2.8cm]{geometry} 
+
+%\setlength{\parskip}{0pt}
+%\setlength{\parsep}{0pt}
+%\setlength{\headsep}{0pt}
+%\setlength{\topskip}{0pt}
+%\setlength{\topmargin}{0pt}
+%\setlength{\topsep}{0pt}
+%\setlength{\partopsep}{0pt}
+
+\linespread{1}
+
+%\usepackage{marvosym}
+
+%\textwidth = 6.5 in \textheight = 9.2 in \oddsidemargin = 0.0 in
+%\evensidemargin = 0.0 in \topmargin = -0.0 in \headheight = 0.0 in
+%\headsep = 0.0in \parskip = 0.0in \parindent = 0.0in
+%\def\baselinestretch{0.871}
+
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{defn}[theorem]{Definition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{remark}{Remark}[section]
+\newtheorem{example}[theorem]{Example}
+
+\newcommand{\E}{{\mathbb E}}
+\newcommand{\se}{{\mathcal{E}}}
+\newcommand{\R}{{\mathbb R}}
+\renewcommand{\P}{{\mathbb P}}
+\newcommand{\ac}{{\mathcal{A}}}
+\newcommand{\A}{{\mathcal{A}}}
+\newcommand{\B}{{\mathcal{B}}}
+\newcommand{\C}{{\mathcal{C}}}
+\newcommand{\M}{{\mathcal{M}}}
+\newcommand{\Mf}{{\mathfrak{M}}}
+\newcommand{\T}{{\mathcal{T}}}
+\newcommand{\Z}{{\mathcal{Z}}}
+\newcommand{\K}{{\mathcal{K}}}
+\newcommand{\lc}{{\mathcal{L}}}
+\newcommand{\Ps}{{\mathcal{P}}}
+\newcommand{\G}{{\mathcal{G}}}
+\newcommand{\pa}{{\mathring{p}}}
+\newcommand{\F}{{\cal F}}
+\newcommand{\samp}{{\mathcal{X}}}
+\newcommand{\X}{{\mathcal{X}}}
+\newcommand{\hi}{{\hat{\Phi}}}
+\newcommand{\data}{{\text{data}}}
+
+\newcounter{rcnt}[section]
+\renewcommand{\thercnt}{(\roman{rcnt})}
+
+\def\qt#1{\qquad\text{#1}}
+
+\def\argmin{\mathop{\rm argmin}}
+\def\argmax{\mathop{\rm argmax}}
+
+
+\setlength{\parskip}{1.4 \medskipamount}
+%\sloppy
+%\linespread{1.3}
+
+\begin{document}
+
+\title{STAT 153 \& 248 - Time Series  \\
+  Lecture Two} 
+\subtitle{Fall 2026, UC Berkeley}
+\author{Aditya Guntuboyina}
+
+\date{01 September 2026}
+
+\maketitle
+
+
+We shall start the first topic of the course: Linear Regression. We
+start our discussion with simple linear regression (where there is a
+single covariate), and then extend to multiple linear regression
+(where there are multiple covariates). 
+
+\section{Simple Linear Regression}
+We want to learn the relationship between two variables $y$ and
+$x$, with the aim of predicting $y$ given the value of $x$. $y$ is
+called the response variable, and $x$ is called the covariate. For
+example (this was one of the original applications of regression), $y$
+denotes the height of an adult man, and $x$ denotes the height of
+their father. The linear regression model assumes that $y$ is related
+to $x$ via the equation:
+\begin{equation}\label{lin_eq}
+  y = \beta_0 + \beta_1 x + \epsilon
+\end{equation}
+where $\beta_0$ and $\beta_1$ are parameters, and $\epsilon$ denotes
+an error term which captures deviations of $y$ from the assumed
+equation $\beta_0 + \beta_1 x$. The parameters $\beta_0$ and $\beta_1$
+can be interpreted as follows: $\beta_0$ denotes the value of $y$ when
+$x = 0$ and $\beta_1$ represents the change in $y$ when $x$ changes by
+one unit. 
+
+We observe data $(x_1, y_1), \dots, (x_n, y_n)$ on the covariate and
+response variables corresponding to $n$ instances (in the height
+example, we have data on heights for $n$ father-son pairs). Writing
+the equation \eqref{lin_eq} for each individual pair $(x_i, y_i)$ we
+get
+\begin{equation}\label{linmod}
+  y_i = \beta_0 + \beta_1 x_i + \epsilon_i. 
+\end{equation}
+The observed data $(x_1, y_1), \dots, (x_n, y_n)$ will be used to
+obtain estimates $\hat{\beta}_0$ and $\hat{\beta}_1$ (as well as
+uncertaintly quantification) for the parameters $\beta_0$ and
+$\beta_1$. After obtaining these estimates, one can predict the value
+of the response variable for a possibly new covariate value
+$x_{\text{new}}$ by $\hat{\beta}_0 + \hat{\beta}_1
+x_{\text{new}}$.
+
+We will implement the equations for obtaining $\hat{\beta}_0$ and
+$\hat{\beta}_1$ from the 
+observed data $(x_1, y_1), \dots, (x_n, y_n)$ using the Python library
+\texttt{statsmodels}. We will also study the math behind
+this process. 
+
+To apply linear regression, we need data on both $y$ and $x$. In the
+time series context, the observed data is $y_1, \dots, y_n$ which
+represent observations for a single variable $y$. There is no
+additional data on another variable $x$. In order to apply regression
+methods to time series, we need to create a covariate variable
+$x$. There are two main ways of doing it:
+\begin{enumerate}
+\item \textbf{Time as covariate}: Here we take the time index as the
+  covariate $x$.  For example, in the time series dataset on the
+population of the United States for each month from January 1959 to
+December 2024: $n$ denotes the total number of data points, $x_i = i$
+and $y_i$ denotes the observed population data for the $i^{\text{th}}$
+month (first month is January 1959, second month is February 1959 and
+so on).
+\item \textbf{Lagged $y$ as covariate}: Here we take $x_i =
+  y_{i-1}$. In other words, the covariate equals the response at the
+  previous time point. This kind of regression is called Lagged
+  Regression or, more commonly, AutoRegression. 
+\end{enumerate}
+For now, we shall focus on the first kind of regression (time as
+covariate). We shall study AutoRegression in more detail later.
+
+\section{Estimation of $\beta_0$ and $\beta_1$}
+
+\subsection{Least Squares Estimates}
+
+The estimates of $\beta_0$ and $\beta_1$ reported by standard
+libraries (such as \texttt{statsmodels}) are obtained using the method
+of least squares. This involves minimizing the sum of squares
+criterion:
+\begin{equation}\label{ss}
+  S(\beta_0, \beta_1) = \sum_{i=1}^n \left(y_i - \beta_0 - \beta_1 x_i
+  \right)^2 
+\end{equation}
+over all values of $\beta_0$ and $\beta_1$. It is left as an exercise
+to verify that: 
+\begin{equation*}
+  \hat{\beta}_0 = \bar{y} - \hat{\beta}_1 \bar{x}  ~~ \text{ and } ~~
+  \hat{\beta}_1 = \frac{\sum_{i=1}^n (y_i - \bar{y})(x_i -
+    \bar{x})}{\sum_{i=1}^n (x_i - \bar{x})^2}, 
+\end{equation*}
+where
+\begin{equation*}
+  \bar{y} = \frac{y_1 + \dots + y_n}{n} ~~ \text{ and } ~~   \bar{x} =
+  \frac{x_1 + \dots + x_n}{n}. 
+\end{equation*}
+
+\subsection{MLE under Normality of Errors}
+Suppose we assume that the error terms $\epsilon_1, \dots, \epsilon_n$ in
+\eqref{linmod} are i.i.d normal with mean zero and some variance
+$\sigma^2$:
+\begin{equation}\label{errgauss}
+ \epsilon_1, \dots, \epsilon_n \overset{\text{i.i.d}}{\sim} N(0,
+ \sigma^2). 
+\end{equation}
+Then the least squares estimates of $\beta_0$ and $\beta_1$ coincide
+with the Maximum Likelihood Estimates (MLEs). 
+
+Another way of writing the model \eqref{linmod} and \eqref{errgauss}
+is: 
+\begin{equation*}
+  y_i \overset{\text{independent}}{\sim} N(\beta_0 + \beta_1 x_i, 
+  \sigma^2). 
+\end{equation*}
+To obtain the MLEs of the parameters ($\beta_0, \beta_1$ as well as
+$\sigma$), we need to write the likelihood function and then maximize
+it. The likelihood function is the joint density of the data for fixed
+values of the parameters $\beta_0, \beta_1, \sigma$: 
+\begin{align}
+  f_{y_1, \dots, y_n \mid \beta_0, \beta_1, \sigma}(y_1, \dots, y_n) &=
+  \prod_{i=1}^n \frac{1}{\sqrt{2 \pi} \sigma} \exp \left(-\frac{(y_i -
+                                                                       \beta_0
+                                                                       -
+                                                                       \beta_1
+                                                                       x_i)^2}{2
+                                                                       \sigma^2}
+                                                                       \right)
+  \nonumber \\
+  &= (2 \pi)^{-n/2} \sigma^{-n} \exp \left(-\frac{1}{2 \sigma^2}
+    \sum_{i=1}^n (y_i - \beta_0 - \beta_1 x_i)^2 \right) \nonumber \\
+  &= (2 \pi)^{-n/2} \sigma^{-n} \exp \left(-\frac{S(\beta_0,
+    \beta_1)}{2 \sigma^2} \right) \label{like}
+\end{align}
+where $S(\beta_0, \beta_1)$ is the sum of squares \eqref{ss}. 
+\begin{equation*}
+  S(\beta_0, \beta_1) :=
+    \sum_{i=1}^n (y_i - \beta_0 - \beta_1 x_i)^2. 
+  \end{equation*}
+To write this likelihood, we are assuming that $x_1, \dots, x_n$ are
+fixed. This assumption is fine if $x_i = i$ (regression with time as
+covariate) but not strictly true when $x_i = y_{i-1}$
+(auto-regression). We shall see how it is still approximately true in
+the case of AutoRegression later.
+
+Maximization of the likelihood is a three variable optimization
+problem (the variables being $\beta_0, \beta_1, \sigma$). The optimal
+values of $\beta_0$ and $\beta_1$ in this problem coincide with the
+least squares estimate. We shall see why in the next lecture. 
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

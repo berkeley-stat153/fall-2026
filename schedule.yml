@@ -6,3 +6,21 @@
           id: "1"
           name: Slides--Introduction and Overview
           href: "./LectureOneSlides153248Fall2026PDF.pdf"
+- week: 2
+  days:
+    - date: "Sept 01"
+      items:
+        - type: "Lab"
+          id: "1"
+          name: Notes--Linear Regression for Time Series
+          href: "./CodeLabOne153248Fall2026.ipynb"
+    - date: "Sept 01"
+      items:
+        - type: "Lecture"
+          id: "2 Notes"
+          name: Notes--Linear Regression for Time Series
+          href: "./LectureTwo153248Fall2026.pdf"
+        - type: "Lecture"
+          id: "2 Code"
+          name: Notebook--Linear Regression Models fit to the US population data
+          href: "./CodeLectureTwo153248Fall2026.ipynb"
