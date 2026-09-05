@@ -32,4 +32,14 @@
           id: '2'
           name: UN 2024 Population Projections
           href: "./UN 2024 population projections.xlsx"	  
+    - date: 'Sept 03'
+      items:
+        - type: 'Lecture'
+          id: '3 Notes'
+          name: Notes--Simple Bayesian Inference Examples
+          href: "./LectureThree153248Fall2026.pdf"
+        - type: 'Lecture'
+          id: '3 In-class'
+          name: Handwritten Notes
+          href: "./HandwrittenNotesLectureThree153248Fall2026.pdf"
 	  

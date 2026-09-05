@@ -1,0 +1,510 @@
+%\documentclass[12pt,oneside]{amsart}
+\documentclass{scrartcl}
+
+%\documentclass{article}
+
+\usepackage{amsthm,amsmath,amssymb}
+\usepackage[numbers]{natbib}
+
+%\usepackage[colorlinks]{hyperref}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,%
+    citecolor=black,%
+    filecolor=black,%
+    linkcolor=black,%
+    urlcolor=black
+}
+\usepackage{hypernat}
+\usepackage[top=2.5cm, bottom=2.5cm, left=2.8cm,
+right=2.8cm]{geometry} 
+
+%\setlength{\parskip}{0pt}
+%\setlength{\parsep}{0pt}
+%\setlength{\headsep}{0pt}
+%\setlength{\topskip}{0pt}
+%\setlength{\topmargin}{0pt}
+%\setlength{\topsep}{0pt}
+%\setlength{\partopsep}{0pt}
+
+\linespread{1}
+
+%\usepackage{marvosym}
+
+%\textwidth = 6.5 in \textheight = 9.2 in \oddsidemargin = 0.0 in
+%\evensidemargin = 0.0 in \topmargin = -0.0 in \headheight = 0.0 in
+%\headsep = 0.0in \parskip = 0.0in \parindent = 0.0in
+%\def\baselinestretch{0.871}
+
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{defn}[theorem]{Definition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{remark}{Remark}[section]
+\newtheorem{example}[theorem]{Example}
+
+\newcommand{\E}{{\mathbb E}}
+\newcommand{\se}{{\mathcal{E}}}
+\newcommand{\R}{{\mathbb R}}
+\renewcommand{\P}{{\mathbb P}}
+\newcommand{\ac}{{\mathcal{A}}}
+\newcommand{\A}{{\mathcal{A}}}
+\newcommand{\B}{{\mathcal{B}}}
+\newcommand{\C}{{\mathcal{C}}}
+\newcommand{\M}{{\mathcal{M}}}
+\newcommand{\Mf}{{\mathfrak{M}}}
+\newcommand{\T}{{\mathcal{T}}}
+\newcommand{\Z}{{\mathcal{Z}}}
+\newcommand{\K}{{\mathcal{K}}}
+\newcommand{\lc}{{\mathcal{L}}}
+\newcommand{\Ps}{{\mathcal{P}}}
+\newcommand{\G}{{\mathcal{G}}}
+\newcommand{\pa}{{\mathring{p}}}
+\newcommand{\F}{{\cal F}}
+\newcommand{\samp}{{\mathcal{X}}}
+\newcommand{\X}{{\mathcal{X}}}
+\newcommand{\hi}{{\hat{\Phi}}}
+\newcommand{\data}{{\text{data}}}
+
+\newcounter{rcnt}[section]
+\renewcommand{\thercnt}{(\roman{rcnt})}
+
+\def\qt#1{\qquad\text{#1}}
+
+\def\argmin{\mathop{\rm argmin}}
+\def\argmax{\mathop{\rm argmax}}
+
+
+\setlength{\parskip}{1.4 \medskipamount}
+%\sloppy
+%\linespread{1.3}
+
+\begin{document}
+
+\title{STAT 153 \& 248 - Time Series  \\
+  Lecture Three} 
+\subtitle{Fall 2026, UC Berkeley}
+\author{Aditya Guntuboyina}
+
+\date{03 September 2026}
+
+\maketitle
+
+We shall look at the math behind the linear regression
+calculations. We will mostly focus on the Bayesian approach which is
+conceptually simpler and generalizes easily to more complicated
+models. We shall look at the main frequentist ideas in the next
+lecture.
+
+In order to motivate the main ideas behind Bayesian inference for
+linear regression, we shall start with some simple inference problems
+first before looking at linear regression.
+
+\section{Simple Question 1}
+
+Suppose $a$ and $b$ are two numbers and all we know is that $a + b =
+7$. Based on this information, what can we say about $a$?
+
+There is clearly not enough information to determine $a$. For every choice of
+$a$, we can choose $b=7-a$. Thus there are infinitely many possible
+pairs $(a,b)$.
+
+\section{Simple Question 2}
+
+Suppose $a$ and $b$ are two numbers such that $a + b = 7$. Suppose $b$
+is small in magnitude. What then can be said about $a$?
+
+Here is a way of arriving at a reasonable solution to this problem
+using probability theory. Assume that $a$ and $b$ are independent
+with
+\begin{align}\label{md2}
+  a \sim \operatorname{Unif}(-C,C) ~~ \text{ and } ~~
+  b \sim N(0,\sigma^2)
+\end{align}
+where $C$ is very large, and $\sigma$ is a fixed quantity that
+characterizes smallness of $b$. Depending on what we understand by
+smallness of $b$, we can set a value of $\sigma$ (e.g., $\sigma =
+0.5$).
+
+Using the \textit{modeling} assumption \eqref{md2} and the available
+\textit{data} that $a + b = 7$, our uncertainty in $a$ will be
+captured by the probability distribution:
+\begin{align*}
+  a \mid a + b = 7. 
+\end{align*}
+Here is a simple way of calculating this conditional distribution. Let
+$y = a + b$ so that we need to calculate the conditional density of $a
+\mid y = 7$. The conditional distribution of $y \mid a$ is given by
+$N(a, \sigma^2)$ because $y = a + b$,  and $b$ is distributed as $N(0,
+\sigma^2)$  independently of $a$. Therefore by Bayes rule:
+\begin{align*}
+  f_{a \mid y = 7}(a) &\propto f_{y \mid a}(7) f_{a}(a) \\
+  &= \frac{1}{\sigma \sqrt{2 \pi}} \exp \left(-\frac{(7 - a)^2}{2
+    \sigma^2} \right) \times \frac{I\{-C < a < C\}}{2C} \\
+  &\propto \exp \left(-\frac{(7 - a)^2}{2
+    \sigma^2} \right) I\{-C < a < C\}. 
+\end{align*}
+This is the normal distribution $N(7, \sigma^2)$ truncated to the
+interval $(-C, C)$. Because we shall take $C$ to be very large, the
+restriction to $(-C, C)$ has almost no effect and therefore,
+\begin{align*}
+  a\mid a+b=7 &\approx N(7,\sigma^2). 
+\end{align*}
+Thus under our probabilistic assumptions and the given information,
+our uncertainty about $a$ is captured by the normal distribution
+centered at 7 and variance $\sigma^2$. The amount of uncertainty is
+controlled by $\sigma^2$. 
+
+\section{Simple Question 3}
+
+Now suppose we have three numbers $a, b_1, b_2$. Assume that both
+$b_1$ and $b_2$ are small in magnitude. Also suppose that 
+\begin{align*}
+  a+b_1 = 7 ~~ \text{ and } ~~ a+b_2 &= 10. 
+\end{align*}
+What can then be said about $a$?
+
+Note now that there are three unknown numbers and two pieces of
+information. So this problem is also logically unanswerable without
+further assumptions. We shall make probabilistic assumptions on the
+unknown $a, b_1, b_2$. Specifically, we assume that 
+\begin{align}\label{md3}
+  a \sim \operatorname{Unif}(-C,C),  ~~~ \text{ and } ~~~  b_1,b_2\mid\sigma
+  \overset{\mathrm{iid}}{\sim}N(0,\sigma^2) ~~~ \text{ and } ~~~
+  \log\sigma \sim \operatorname{Unif}(-C,C)
+\end{align}
+where, as before, $C$ is a very large constant. The idea behind this
+modeling assumption is:
+\begin{enumerate}
+\item We don't want to assume anything specific about $a$
+\item Because $b_1, b_2$ are given to be small in magnitude, we assume
+  a normal distribution centered at 0 for them with their magnitude
+  controlled by a parameter $\sigma$. This also assumes they have the
+  same scale.
+\item The common scale $\sigma$ of $b_1, b_2$ is also unknown. We
+  don't want to assume anything specific about this scale so we use
+  the uniform $(-C, C)$ prior on $\log \sigma$. Because $\sigma$ is
+  always positive, $\log \sigma$ makes sense and it takes values that
+  can be both positive and negative, and this makes the
+  $\text{Unif}(-C, C)$ prior reasonable for $\log \sigma$. 
+\end{enumerate}
+The assumption $\log \sigma \sim \text{unif}(-C, C)$ leads to the
+following density for $\sigma$ (by the change of variables formula): 
+The last assumption says that we do not know the order of magnitude of
+$\sigma$. By a change of variables, it gives the density
+\begin{align*}
+  f_\sigma(\sigma)
+  = f_{\log\sigma}(\log\sigma)
+  \left|\frac{d}{d\sigma}\log\sigma\right| = f_{\log \sigma}(\log
+  \sigma) \frac{1}{\sigma} = \frac{I\{-C < \log \sigma < C\}}{2 C
+  \sigma}. 
+\end{align*}
+With these assumptions, we need to calculate the conditional
+distribution of:
+\begin{align*}
+  a \mid a+ b_1 = 7, a + b_2 = 10. 
+\end{align*}
+This determines our uncertainty about $a$ given the information $a +
+b_1 = 7$ and $a + b_2 = 10$. To compute the above conditional, let us
+use the notation:
+\begin{align*}
+  y_1 = a + b_1 ~~~ \text{ and } ~~~ y_2 = a + b_2, 
+\end{align*}
+so that we need to calculate the density of:
+\begin{align}\label{req_cond}
+  a \mid y_1 = 7, y_2 = 10. 
+\end{align}
+One complication in calculating this density is the variable $\sigma$
+which is present in the modeling assumption but is not present in this
+conditional density. A simple way of dealing with this is to first
+compute the joint conditional density
+\begin{align}\label{req_cond_sig}
+  a, \sigma \mid y_1 = 7, y_2 = 10
+\end{align}
+and then to integrate over $\sigma$ to obtain the required conditional
+density \eqref{req_cond}. To calculate \eqref{req_cond_sig}, we use
+the Bayes rule in the following way: (note that $y_1, y_2 \mid a,
+\sigma \sim N(a, \sigma^2)$)
+\begin{align*}
+  f_{a, \sigma \mid y_1, y_2}(a, \sigma) &\propto
+                                                         f_{y_1, y_2
+                                                         \mid a,
+                                                         \sigma}(y_1,  y_2)
+                                                         f_{a,
+                                                         \sigma}(a,
+                                                         \sigma) \\
+  &= \left\{\prod_{j=1}^2
+  \frac{1}{\sqrt{2\pi}\sigma}
+  \exp\left(-\frac{(y_j-a)^2}{2\sigma^2}\right)\right\} f_a(a)
+    f_{\sigma}(\sigma) \\
+  &= \left\{\prod_{j=1}^2
+  \frac{1}{\sqrt{2\pi}\sigma}
+  \exp\left(-\frac{(y_j-a)^2}{2\sigma^2}\right)\right\} \frac{I\{-C <
+    a < C\}}{2 C} \frac{I\{-C < \log \sigma < C\}}{2 C \sigma} \\
+  &\propto \sigma^{-3} \exp \left(-\frac{(y_1 - a)^2 + (y_2 - a)^2}{2
+    \sigma^2} \right) I\{-C < a < C\} I\{e^{-C} < \sigma < e^C\}
+\end{align*}
+where, in the last step above, we ignored the terms involving
+$\sqrt{2\pi}$ and $C$ in the proportional constant. As $C$ is
+very large, we shall also ignore the first indicator function above because
+it will be 1 for all reasonable values of $a$, and replace the second
+indicator function by $I\{\sigma > 0\}$ because it will be 1 for all
+reasonable values of $\sigma > 0$. This gives
+\begin{align*}
+  f_{a, \sigma \mid y_1, y_2}(a, \sigma) \propto \sigma^{-3} \exp \left(-\frac{(y_1 - a)^2 + (y_2 - a)^2}{2
+    \sigma^2} \right) I\{\sigma > 0\}. 
+\end{align*}
+This conditional density reflects our knowledge of both $a$ and
+$\sigma$ given the information on $y_1$ and $y_2$. Since the question
+only cares about $a$ (and not $\sigma$), we can obtain
+\eqref{req_cond} by integrating the above with respect to
+$\sigma$. This gives:
+\begin{align*}
+  f_{a \mid y_1, y_2}(a) &= \int f_{a, \sigma \mid y_1, y_2}(a, \sigma)
+                           d\sigma \propto \int_0^{\infty} \sigma^{-3} \exp \left(-\frac{(y_1 - a)^2 + (y_2 - a)^2}{2
+                           \sigma^2} \right) d \sigma.
+\end{align*}
+Let
+\begin{align*}
+  S(a) &= (y_1-a)^2+(y_2-a)^2, 
+\end{align*}
+and we can call $S(a)$ the sum of squares function. Then
+\begin{align*}
+  f_{a \mid y_1, y_2}(a) \propto \int_0^{\infty} \sigma^{-3} \exp \left(-\frac{S(a)}{2
+                           \sigma^2} \right) d \sigma.
+\end{align*}
+We use the change of variable:
+\begin{align}\label{cov}
+  \sigma = t \sqrt{S(a)} ~~~ \text{ so that } ~~~ d \sigma =
+  \sqrt{S(a)}~dt. 
+\end{align}
+Then
+\begin{align*}
+  f_{a \mid y_1, y_2}(a) &\propto \int_0^{\infty} \sigma^{-3} \exp \left(-\frac{S(a)}{2
+                           \sigma^2} \right) d \sigma \\
+  &= \int_0^{\infty} t^{-3} S(a)^{-3/2} \exp \left(-\frac{1}{2 t^2}
+    \right) \sqrt{S(a)} dt \\
+  &= \frac{1}{S(a)} \int_0^{\infty} t^{-3} \exp \left(-\frac{1}{2t^2}
+    \right) dt \\
+  &\propto \frac{1}{S(a)}, 
+\end{align*}
+where, in the last step, we ignored the integral term because it is a
+constant (i.e., does not depend on $a$). We therefore proved
+\begin{align*}
+  f_{a\mid y_1,y_2}(a) \propto \frac{1}{(y_1-a)^2+(y_2-a)^2}.
+\end{align*}
+It turns out that this is a Cauchy density. To see this, first
+complete the square and rewrite $S(a)$ as: 
+\begin{align*}
+  (y_1-a)^2+(y_2-a)^2
+  =2\left(a-\frac{y_1+y_2}{2}\right)^2
+    +\frac{(y_1-y_2)^2}{2} =2\left\{
+    \left(a-\frac{y_1+y_2}{2}\right)^2
+    +\left(\frac{|y_1-y_2|}{2}\right)^2
+    \right\}
+\end{align*}
+so that
+\begin{align}\label{tcau_1}
+  f_{a \mid y_1, y_2}(a) \propto \frac{1}{    \left(a-\frac{y_1+y_2}{2}\right)^2
+    +\left(\frac{|y_1-y_2|}{2}\right)^2}. 
+\end{align}
+The density of a Cauchy random variable with location $\mu$ and scale
+$\tau$ is
+\begin{align} \label{tcau_2}
+ \text{Density of Cauchy}(\mu, \tau) = \frac{1}{\pi\tau} \frac{1}{1+\left((x-\mu)/\tau\right)^2}
+  \propto \frac{1}{\tau^2+(x-\mu)^2}. 
+\end{align}
+Comparing \eqref{tcau_1} and \eqref{tcau_2}, we get 
+\begin{align*}
+  a\mid y_1,y_2
+  \sim \operatorname{Cauchy}\left(
+  \frac{y_1+y_2}{2},\frac{|y_1-y_2|}{2}\right).
+\end{align*}
+For $y_1=7$ and $y_2=10$, this becomes
+\begin{align*}
+  a\mid y_1=7,y_2=10
+  &\sim \operatorname{Cauchy}(8.5,1.5).
+\end{align*}
+It is quite remarkable that we obtain a Cauchy density to capture the
+uncertainty about $a$ given the observations. This is basically a
+consequence of the modeling assumptions \eqref{md3}. 
+
+\section{Question 4: Several Measurements of One Quantity}
+
+Suppose a scientist makes $n=6$ measurements of an unknown physical
+quantity $\theta$ and obtains 
+\begin{align*}
+  y_1=26.6, ~~ y_2=38.5, ~~ y_3 = 34.4, ~~ y_4 = 34.0, ~~ y_5 = 31.0,
+  ~~
+  y_6
+  =
+  23.6. 
+\end{align*}
+Based on these observations, what can be inferred about $\theta$?
+
+We consider each observation $y_i$ as comprised of
+$\theta$ and an 'error' or 'noise' term $\epsilon_i$:
+\begin{align*}
+  y_i = \theta + \epsilon_i \qt{for $i = 1, \dots, n$}. 
+\end{align*}
+This means that we are trying to write the $n$ observations $y_1,
+\dots, y_n$ in terms of $n+1$ unknowns $\theta$ and $\epsilon_1,
+\dots, \epsilon_n$. On these $n+1$ unknowns, we make the following
+modeling assumptions: 
+\begin{align*}
+  \theta \sim \operatorname{Unif}(-C,C) ~~ \text{ and } ~~ 
+  \epsilon_1,\ldots,\epsilon_n\mid\sigma
+  \overset{\mathrm{iid}}{\sim}N(0,\sigma^2) ~~ \text{ and } ~~ 
+  \log\sigma \sim \operatorname{Unif}(-C,C).
+\end{align*}
+This assumption is the same as that used in the previous section, the
+only difference is that $n$ is now 6 as opposed to 2, and also we are
+using different notation ($\theta$ in place of $a$, and $\epsilon_1,
+\dots, \epsilon_n$ in place of $b_1, b_2$).
+
+Our goal is to find the conditional density of $\theta$ given $y_1,
+\dots, y_n$. As in question 3, we first find the joint conditional
+density of $(\theta, \sigma)$ given $y_1, \dots, y_n$, and then we
+integrate out $\sigma$ to calculate $\theta \mid y_1, \dots, y_n$. By
+Bayes rule,
+\begin{align*}
+  f_{\theta, \sigma \mid y_1, \dots, y_n}(\theta, \sigma) &\propto
+                                                         f_{y_1,
+                                                            \dots, y_n
+                                                         \mid \theta,
+                                                         \sigma}(y_1,
+                                                            \dots,  y_n)
+                                                         f_{\theta,
+                                                         \sigma}(\theta,
+                                                         \sigma) \\
+  &= \left\{\prod_{j=1}^n
+  \frac{1}{\sqrt{2\pi}\sigma}
+  \exp\left(-\frac{(y_j-\theta)^2}{2\sigma^2}\right)\right\} f_{\theta}(\theta)
+    f_{\sigma}(\sigma) \\
+  &= \left\{\prod_{j=1}^n
+  \frac{1}{\sqrt{2\pi}\sigma}
+  \exp\left(-\frac{(y_j-\theta)^2}{2\sigma^2}\right)\right\} \frac{I\{-C <
+    \theta < C\}}{2 C} \frac{I\{-C < \log \sigma < C\}}{2 C \sigma} \\
+  &\propto \sigma^{-n-1} \exp \left(-\frac{(y_1 - \theta)^2 + \dots +
+    (y_n - \theta)^2}{2 
+    \sigma^2} \right) I\{-C < \theta < C\} I\{e^{-C} < \sigma <
+    e^C\}. 
+\end{align*}
+Ignoring the indicators, we get 
+\begin{align*}
+  f_{\theta, \sigma \mid y_1, \dots, y_n}(\theta, \sigma) \propto
+  \sigma^{-n-1} \exp \left(-\frac{(y_1 - \theta)^2 + \dots + (y_n -
+  \theta)^2}{2  \sigma^2} \right) I\{\sigma > 0\}. 
+\end{align*}
+Integrating the above with respect to $\sigma$, we get 
+\begin{align*}
+  f_{\theta \mid y_1, \dots, y_n}(\theta) &= \int f_{\theta, \sigma \mid
+                                            y_1, \dots, y_n}(\theta, \sigma) 
+                           d\sigma \propto \int_0^{\infty}
+                                            \sigma^{-n-1} \exp
+                                            \left(-\frac{(y_1 - \theta)^2 +
+                                            \dots +
+                                            (y_n - \theta)^2}{2 
+                           \sigma^2} \right) d \sigma.
+\end{align*}
+Let
+\begin{align*}
+  S(\theta) &= (y_1-\theta)^2+ \dots +(y_n-\theta)^2
+\end{align*}
+be the sum of squares function. Then
+\begin{align*}
+  f_{\theta \mid y_1, \dots, y_n}(\theta) \propto \int_0^{\infty}
+  \sigma^{-n-1} \exp \left(-\frac{S(\theta)}{2 
+                           \sigma^2} \right) d \sigma.
+\end{align*}
+Using the same change of variable as in \eqref{cov}, we deduce
+\begin{align}\label{tt_1}
+  f_{\theta \mid y_1, \dots, y_n}(\theta) \propto \left(
+  \frac{1}{S(\theta)} \right)^{n/2}. 
+\end{align}
+We will see next week that this is a $t$-density with $n-1$ degrees of
+freedom. Note that the value of $\theta$ that  minimizes $S(\theta)$
+is the sample mean:
+\begin{align*}
+  \bar{y} = \frac{y_1 + \dots + y_n}{n}. 
+\end{align*}
+Because $1/S(\theta)$ appears in \eqref{tt_1}, it means that the
+conditional density of $\theta$ given $y_1, \dots, y_n$ is maximized
+at the sample mean.
+
+
+\section{Linear Regression with Time as a Covariate}
+
+Suppose $y_1, \dots, y_n$ is a time series. We want to decompose this
+time series as
+\begin{align*}
+  y_i = \beta_0 + \beta_1 x_i + \epsilon_i
+\end{align*}
+where $x_i$ is known. The simplest example is $x_i = i$; this
+corresponds to regression with time as covariate. The analysis also
+works when $x_i = y_{i-1}$ as in lagged regression but we shall study
+this later. There are $n+2$ unknowns here: $\beta_0, \beta_1$ and
+$\epsilon_1, \dots, \epsilon_n$. The goal is to figure them out from
+the $n$ known observations $y_1, \dots, y_n$.
+
+We make the following modeling assumptions:
+\begin{align*}
+  \beta_0 \sim \text{Unif}(-C, C) ~~ \beta_1 \sim \text{Unif}(-C, C)
+  ~~ \epsilon_1, \dots, \epsilon_n \mid \sigma
+  \overset{\text{i.i.d}}{\sim} N(0, \sigma^2) ~~ \log \sigma \sim
+  \text{Unif}(-C, C). 
+\end{align*}
+Our interest is usually in $\beta_0, \beta_1$. So we aim to calculate
+the conditional density of $(\beta_0, \beta_1)$ given $y_1, \dots,
+y_n$. We do this by first calculating the density of $(\beta_0,
+\beta_1, \sigma)$ given $y_1, \dots, y_n$, and then integrating out
+$\sigma$. By Bayes rule, 
+\begin{align*}
+  &f_{\beta_0,\beta_1,\sigma\mid y_1,\ldots,y_n}
+  (\beta_0,\beta_1,\sigma) \\
+  &\qquad\propto
+  \left\{\prod_{i=1}^n
+  \frac{1}{\sqrt{2\pi}\sigma}
+  \exp\left[-\frac{(y_i-\beta_0-\beta_1x_i)^2}{2\sigma^2}\right]
+  \right\}
+  \frac{I\{-C<\beta_0<C\}}{2C}
+  \frac{I\{-C<\beta_1<C\}}{2C} \\
+  &\qquad\quad\times
+  \frac{ I\{-C<\log\sigma<C\}}{2C\sigma} \\
+  &\qquad\propto \sigma^{-(n+1)}
+  \exp\left\{-\frac{S(\beta_0,\beta_1)}{2\sigma^2}\right\} I\{\sigma >
+    0\},
+\end{align*}
+where 
+\begin{align*}
+  S(\beta_0,\beta_1) =\sum_{i=1}^n(y_i-\beta_0-\beta_1x_i)^2
+\end{align*}
+is the sum of squares, and we have ignored the indicator $I\{-C <
+\beta_0 < C\}$, $I\{-C < 
+\beta_1 < C\}$ and replaced the indicator $I\{e^{-C} < \sigma < e^C\}$
+by $I\{\sigma > 0\}$. 
+
+As in the previous two sections, integrating out $\sigma$ gives 
+\begin{align*}
+  f_{\beta_0,\beta_1\mid y_1,\ldots,y_n}
+  (\beta_0,\beta_1\mid y_1,\ldots,y_n)
+  &\propto
+  \left\{\frac{1}{S(\beta_0,\beta_1)}\right\}^{n/2}.
+\end{align*}
+We will discuss in the next lecture that this is a multivariate
+$t$-distribution with $n-2$ degrees of freedom. It is centered at the
+least squares estimators of $\beta_0$ and $\beta_1$. 
+
+
+
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
