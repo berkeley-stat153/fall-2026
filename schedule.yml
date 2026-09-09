@@ -42,4 +42,34 @@
           id: '3 In-class'
           name: Handwritten Notes
           href: "./HandwrittenNotesLectureThree153248Fall2026.pdf"
+- week: 3
+  days:
+    - date: "Sept 09"
+      items:
+        - type: "Lab"
+          id: "2"
+          name: Notes--Linear Regression Details
+          href: "./CodeLabTwo153248Fall2026.ipynb"
+        - type: 'Dataset'
+          id: '1'
+          name: GDP data from FRED
+          href: "./GDP-Jan2025FRED.csv"
+    - date: "Sept 09"
+      items:
+        - type: "Lecture"
+          id: "4 Notes"
+          name: Notes--Multiple Linear Regression
+          href: "./LectureFour153248Fall2026.pdf"
+        - type: "Lecture"
+          id: "4 Code"
+          name: Notebook--Multiple Linear Regression
+          href: "./CodeLectureFour153248Fall2026.ipynb"
+        - type: 'Dataset'
+          id: '1'
+          name: US Accidental Deaths
+          href: "./USAccDeaths.csv"
+        - type: 'Dataset'
+          id: '2'
+          name: FRED retail alcohol sales data 
+          href: "./MRTSSM4453USN_October2025.xlsx"	  
 	  
