@@ -72,4 +72,8 @@
           id: '2'
           name: FRED retail alcohol sales data 
           href: "./MRTSSM4453USN_October2025.xlsx"	  
+        - type: 'Lecture'
+          id: '4 In-class'
+          name: Handwritten Notes
+          href: "./HandwrittenNotesLectureFour153248Fall2026.pdf"
 	  
