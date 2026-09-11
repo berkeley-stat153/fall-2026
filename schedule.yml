@@ -44,7 +44,7 @@
           href: "./HandwrittenNotesLectureThree153248Fall2026.pdf"
 - week: 3
   days:
-    - date: "Sept 09"
+    - date: "Sept 08"
       items:
         - type: "Lab"
           id: "2"
@@ -54,7 +54,7 @@
           id: '1'
           name: GDP data from FRED
           href: "./GDP-Jan2025FRED.csv"
-    - date: "Sept 09"
+    - date: "Sept 08"
       items:
         - type: "Lecture"
           id: "4 Notes"
@@ -76,4 +76,18 @@
           id: '4 In-class'
           name: Handwritten Notes
           href: "./HandwrittenNotesLectureFour153248Fall2026.pdf"
+    - date: "Sept 10"
+      items:
+        - type: "Lecture"
+          id: "5 Notes"
+          name: Notes--Bayesian Inference for Multiple Linear Regression
+          href: "./LectureFive153248Fall2026.pdf"
+        - type: "Lecture"
+          id: "5 Code"
+          name: Notebook--Linear Regression and Uncertainty Quantification
+          href: "./CodeLectureFive153248Fall2026.ipynb"
+        - type: 'Lecture'
+          id: '5 In-class'
+          name: Handwritten Notes
+          href: "./HandwrittenNotesLectureFive153248Fall2026.pdf"
 	  
