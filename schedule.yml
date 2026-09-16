@@ -90,4 +90,38 @@
           id: '5 In-class'
           name: Handwritten Notes
           href: "./HandwrittenNotesLectureFive153248Fall2026.pdf"
+- week: 4
+  days:
+    - date: "Sept 15"
+      items:
+        - type: "Lab"
+          id: "3"
+          name: Notes--From linear regression to Nonlinear regression
+          href: "./CodeLabThree153248Fall2026.ipynb"
+        - type: 'Dataset'
+          id: '1'
+          name: US Corn Yield data
+          href: "./USCornYield_1866_1955.csv"
+        - type: 'Dataset'
+          id: '2'
+          name: Weight Loss data
+          href: "./WeightLoss_0_246days.csv"
+    - date: "Sept 16"
+      items:
+        - type: "Lecture"
+          id: "6 Notes"
+          name: Notes--NonLinear Regression
+          href: "./LectureSix153248Fall2026.pdf"
+        - type: "Lecture"
+          id: "6 Code"
+          name: Notebook--NonLinear Regression
+          href: "./CodeLectureSix153248Fall2026.ipynb"
+        - type: 'Dataset'
+          id: '1'
+          name: CA population data from FRED
+          href: "./CAPOP_11Sept2025.csv"
+        - type: 'Lecture'
+          id: '6 In-class'
+          name: Handwritten Notes
+          href: "./HandwrittenNotesLectureSix153248Fall2026.pdf"
 	  
