@@ -12,7 +12,7 @@ subtitle: 'UC Berkeley, Fall 2026'
 
 [aditya@stat.berkeley.edu](mailto:aditya@stat.berkeley.edu)
 
-**Office Hours (Gateway-LL-Golden Quarter B1040)**:
+**Office Hours (Gateway-B1008)**:
  - Thu 2-4 pm
 
 :::
