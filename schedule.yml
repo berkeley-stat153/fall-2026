@@ -106,7 +106,7 @@
           id: '2'
           name: Weight Loss data
           href: "./WeightLoss_0_246days.csv"
-    - date: "Sept 16"
+    - date: "Sept 15"
       items:
         - type: "Lecture"
           id: "6 Notes"
@@ -124,4 +124,25 @@
           id: '6 In-class'
           name: Handwritten Notes
           href: "./HandwrittenNotesLectureSix153248Fall2026.pdf"
-	  
+    - date: "Sept 17"
+      items:
+        - type: "Lecture"
+          id: "7 Notes"
+          name: Notes--Sinusoidal Model
+          href: "./LectureSeven153248Fall2026.pdf"
+        - type: "Lecture"
+          id: "7 Code"
+          name: Notebook--Sinusoidal Model
+          href: "./CodeLectureSeven153248Fall2026.ipynb"
+        - type: 'Dataset'
+          id: '1'
+          name: Annual Sunspots Data
+          href: "./SN_y_tot_V2.0_17Sept2026.csv"
+        - type: 'Dataset'
+          id: '2'
+          name: Audio Middle C file
+          href: "./Hear Piano Note - Middle C.mp3"
+        - type: 'Lecture'
+          id: '7 In-class'
+          name: Handwritten Notes
+          href: "./HandwrittenNotesLectureSeven153248Fall2026.pdf"
