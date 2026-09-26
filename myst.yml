@@ -42,6 +42,7 @@ project:
       children:
       - file: CodeLabFour153248Fall2026.ipynb
       - file: CodeLectureEight153248Fall2026.ipynb            
+      - file: CodeLectureNine153248Fall2026.ipynb
 site:
   template: book-theme
   title: 'Stat 153'

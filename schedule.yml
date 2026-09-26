@@ -168,4 +168,18 @@
           id: '8 In-class'
           name: Handwritten Notes
           href: "./HandwrittenNotesLectureEight153248Fall2026.pdf"
+    - date: "Sept 24"
+      items:
+        - type: "Lecture"
+          id: "9 Notes"
+          name: Notes--Models with multiple sinusoids
+          href: "./LectureNine153248Fall2026.pdf"
+        - type: "Lecture"
+          id: "9 Code"
+          name: Notebook--More on sinusoidal models
+          href: "./CodeLectureNine153248Fall2026.ipynb"
+        - type: 'Lecture'
+          id: '9 In-class'
+          name: Handwritten Notes
+          href: "./HandwrittenNotesLectureNine153248Fall2026.pdf"
 	  
