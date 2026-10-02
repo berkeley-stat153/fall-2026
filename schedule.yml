@@ -215,7 +215,7 @@
           name: Notebook--High-dimensional linear regression with ridge and LASSO regularization
           href: "./CodeLectureEleven153248Fall2026.ipynb"
         - type: 'Lecture'
-          id: "11 In-class'
+          id: '11 In-class'
           name: Handwritten Notes
           href: "./HandwrittenNotesLectureEleven153248Fall2026.pdf"
 	  
