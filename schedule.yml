@@ -247,11 +247,11 @@
         - type: "Lecture"
           id: "12 Notes"
           name: Notes--Ridge regularization from the Bayesian perspective
-          href: "./LectureEleven153248Fall2026.pdf"
+          href: "./LectureTwelve153248Fall2026.pdf"
         - type: "Lecture"
           id: "12 Code"
           name: Notebook--Ridge regularization from the Bayesian perspective
-          href: "./CodeLectureEleven153248Fall2026.ipynb"
+          href: "./CodeLectureTwelve153248Fall2026.ipynb"
         - type: 'Lecture'
           id: '12 In-class'
           name: Handwritten Notes
