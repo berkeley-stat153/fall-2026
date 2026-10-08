@@ -218,4 +218,43 @@
           id: '11 In-class'
           name: Handwritten Notes
           href: "./HandwrittenNotesLectureEleven153248Fall2026.pdf"
+        - type: 'Dataset'
+          id: '1'
+          name: CA average monthly temperatures
+          href: "./cag_CA_tavg.csv"
+        - type: 'Dataset'
+          id: '2'
+          name: AL average monthly temperatures
+          href: "./cag_AL_tavg.csv"
+        - type: 'Dataset'
+          id: '3'
+          name: CA maximum daily temperatures
+          href: "./cag_CA_tmax.csv"
+        - type: 'Dataset'
+          id: '4'
+          name: CA minimum daily temperatures
+          href: "./cag_CA_tmin.csv"
+- week: 7
+  days:
+    - date: "Oct 06"
+      items:
+        - type: "Lab"
+          id: "6"
+          name: Notes--High-dimensional regression with change points
+          href: "./CodeLabSix153248Fall2026.ipynb"
+    - date: "Oct 06"
+      items:
+        - type: "Lecture"
+          id: "12 Notes"
+          name: Notes--Ridge regularization from the Bayesian perspective
+          href: "./LectureEleven153248Fall2026.pdf"
+        - type: "Lecture"
+          id: "12 Code"
+          name: Notebook--Ridge regularization from the Bayesian perspective
+          href: "./CodeLectureEleven153248Fall2026.ipynb"
+        - type: 'Lecture'
+          id: '12 In-class'
+          name: Handwritten Notes
+          href: "./HandwrittenNotesLectureTwelve153248Fall2026.pdf"
+	  
 	  
