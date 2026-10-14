@@ -270,5 +270,26 @@
           id: '13 In-class'
           name: Handwritten Notes
           href: "./HandwrittenNotesLectureThirteen153248Fall2026.pdf"
-	  
+- week: 8
+  days:
+    - date: "Oct 13"
+      items:
+        - type: "Lab"
+          id: "7"
+          name: Notes--Cross-Validation vs Bayesian Regularization for Ridge Regression
+          href: "./CodeLabSeven153248Fall2026.ipynb"
+    - date: "Oct 13"
+      items:
+        - type: "Lecture"
+          id: "14 Notes"
+          name: Notes--Spectrum Model
+          href: "./LectureFourteen153248Fall2026.pdf"
+        - type: "Lecture"
+          id: "14 Code"
+          name: Notebook--Variance Models and the Spectrum Model
+          href: "./CodeLectureFourteen153248Fall2026.ipynb"
+        - type: 'Lecture'
+          id: '14 In-class'
+          name: Handwritten Notes
+          href: "./HandwrittenNotesLectureFourteen153248Fall2026.pdf"	  
 	  
