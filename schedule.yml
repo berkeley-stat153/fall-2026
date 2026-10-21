@@ -306,4 +306,31 @@
           id: '15 In-class'
           name: Handwritten Notes
           href: "./HandwrittenNotesLectureFifteen153248Fall2026.pdf"	  
-	  
+- week: 9
+  days:
+    - date: 'Oct 20'
+      items:
+        - type: 'Lab'
+          id: '8'
+          name: Midterm review
+          href: ""
+    - date: 'Oct 20'
+      items:
+        - type: 'Lecture'
+          id: '16 Notes'
+          name: Notes--AutoRegressive Models
+          href: "./LectureSixteen153248Fall2025.pdf"
+        - type: 'Lecture'
+          id: '16 Code'
+          name: Notebook--AutoRegressive Models
+          href: "./CodeLectureSixteen153248Fall2025.ipynb"
+        - type: 'Lecture'
+          id: '16 In-class'
+          name: Handwritten Notes
+          href: "./HandwrittenNotesLectureSixteen153248Fall2025.pdf"
+    - date: 'Oct 22'
+      items:
+        - type: 'Lecture'
+          id: ''
+          name: Midterm
+          href: ""
