@@ -334,3 +334,25 @@
           id: ''
           name: Midterm
           href: ""
+- week: 10
+  days:
+    - date: "Oct 27"
+      items:
+        - type: "Lab"
+          id: "9"
+          name: Notes--Sunspots Prediction
+          href: "./CodeLabNine153248Fall2026.ipynb"
+    - date: "Oct 27"
+      items:
+        - type: "Lecture"
+          id: "17 Notes"
+          name: Notes--Parameter Estimation in AutoRegressive Models
+          href: "./LectureSeventeen153248Fall2026.pdf"
+        - type: "Lecture"
+          id: "17 Code"
+          name: Notebook--Parameter Estimation in AutoRegressive Models
+          href: "./CodeLectureSeventeen153248Fall2026.ipynb"
+        - type: 'Lecture'
+          id: '17 In-class'
+          name: Handwritten Notes
+          href: "./HandwrittenNotesLectureSeventeen153248Fall2026.pdf"
