@@ -64,7 +64,8 @@ project:
     - title: Week 10
       children:
       - file: CodeLabNine153248Fall2026.ipynb
-      - file: CodeLectureSeventeen153248Fall2026.ipynb            
+      - file: CodeLectureSeventeen153248Fall2026.ipynb
+      - file: CodeLectureEighteen153248Fall2026.ipynb                  
 site:
   template: book-theme
   title: 'Stat 153'

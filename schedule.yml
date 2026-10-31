@@ -356,3 +356,17 @@
           id: '17 In-class'
           name: Handwritten Notes
           href: "./HandwrittenNotesLectureSeventeen153248Fall2026.pdf"
+    - date: "Oct 29"
+      items:
+        - type: "Lecture"
+          id: "18 Notes"
+          name: Notes--Predictions from AR(p) models, and AutoCorrelations
+          href: "./LectureEighteen153248Fall2026.pdf"
+        - type: "Lecture"
+          id: "18 Code"
+          name: Notebook--AR(p) modeling, predictions, and autocorrelations
+          href: "./CodeLectureEighteen153248Fall2026.ipynb"
+        - type: 'Lecture'
+          id: '18 In-class'
+          name: Handwritten Notes
+          href: "./HandwrittenNotesLectureEighteen153248Fall2026.pdf"	  
