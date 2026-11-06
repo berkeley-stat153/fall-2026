@@ -369,4 +369,27 @@
         - type: 'Lecture'
           id: '18 In-class'
           name: Handwritten Notes
-          href: "./HandwrittenNotesLectureEighteen153248Fall2026.pdf"	  
+          href: "./HandwrittenNotesLectureEighteen153248Fall2026.pdf"
+- week: 11
+  days:
+    - date: "Nov 02"
+      items:
+        - type: "Lab"
+          id: "10"
+          name: Notes--AR models (estimation, inference and prediction)
+          href: "./CodeLabTen153248Fall2026.ipynb"
+    - date: "Nov 03"
+      items:
+        - type: "Lecture"
+          id: "19 Notes"
+          name: Notes--AR predictions, stability and MA models
+          href: "./LectureNineteen153248Fall2026.pdf"
+        - type: "Lecture"
+          id: "19 Code"
+          name: Notebook--Prediction and Order Selection in AR Models
+          href: "./CodeLectureNineteen153248Fall2026.ipynb"
+        - type: 'Lecture'
+          id: '19 In-class'
+          name: Handwritten Notes
+          href: "./HandwrittenNotesLectureNineteen153248Fall2026.pdf"
+	  
