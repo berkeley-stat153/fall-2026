@@ -392,4 +392,17 @@
           id: '19 In-class'
           name: Handwritten Notes
           href: "./HandwrittenNotesLectureNineteen153248Fall2026.pdf"
-	  
+    - date: "Nov 05"
+      items:
+        - type: "Lecture"
+          id: "20 Notes"
+          name: Notes--Parameter estimation in MA models
+          href: "./LectureTwenty153248Fall2026.pdf"
+        - type: "Lecture"
+          id: "20 Code"
+          name: Notebook--MA Models
+          href: "./CodeLectureTwenty153248Fall2026.ipynb"
+        - type: 'Lecture'
+          id: '20 In-class'
+          name: Handwritten Notes
+          href: "./HandwrittenNotesLectureTwenty153248Fall2026.pdf"
