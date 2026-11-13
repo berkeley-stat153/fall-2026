@@ -406,3 +406,25 @@
           id: '20 In-class'
           name: Handwritten Notes
           href: "./HandwrittenNotesLectureTwenty153248Fall2026.pdf"
+- week: 12
+  days:
+    - date: "Nov 10"
+      items:
+        - type: "Lab"
+          id: "11"
+          name: Notes--PACF and ACF
+          href: "./CodeLabEleven153248Fall2026.ipynb"
+    - date: "Nov 10"
+      items:
+        - type: "Lecture"
+          id: "21 Notes"
+          name: Notes--ARIMA and SARIMA models
+          href: "./LectureTwentyOne153248Fall2026.pdf"
+        - type: "Lecture"
+          id: "21 Code"
+          name: Notebook--SARIMA models
+          href: "./CodeLectureTwentyOne153248Fall2026.ipynb"
+        - type: 'Lecture'
+          id: '21 In-class'
+          name: Handwritten Notes
+          href: "./HandwrittenNotesLectureTwentyOne153248Fall2026.pdf"
