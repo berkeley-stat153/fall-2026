@@ -428,3 +428,22 @@
           id: '21 In-class'
           name: Handwritten Notes
           href: "./HandwrittenNotesLectureTwentyOne153248Fall2026.pdf"
+    - date: "Nov 12"
+      items:
+        - type: "Lecture"
+          id: "22 Notes"
+          name: Notes--Vector AutoRegressive Models
+          href: "./LectureTwentyTwo153248Fall2026.pdf"
+        - type: "Lecture"
+          id: "22 Code"
+          name: Notebook--Vector AutoRegressive Models
+          href: "./CodeLectureTwentyTwo153248Fall2026.ipynb"
+        - type: 'Lecture'
+          id: '22 In-class'
+          name: Handwritten Notes
+          href: "./HandwrittenNotesLectureTwentyTwo153248Fall2026.pdf"
+        - type: 'Dataset'
+          id: '1'
+          name: Chicago-New York Daily Temperatures
+          href: "./DailyTemperature_Chicago_NewYork_July2014_June2015.csv"
+	  
